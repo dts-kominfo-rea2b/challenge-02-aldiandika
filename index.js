@@ -24,6 +24,21 @@ function lakukanLooping(arrPegawai) {
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
   let hasilLooping = null;
+  let countPria = 0;
+  let countWanita = 0;
+
+  let arrName = [];
+  for(let item=0; item < dataYangAkanDilooping.length; item++){
+    let firstName = dataYangAkanDilooping[item].namaDepan;
+    let lastName = dataYangAkanDilooping[item].namaBelakang;
+    let fullName = firstName + " " + lastName;
+    arrName.push(fullName);
+
+    if(dataYangAkanDilooping[item].jenisKelamin === "M"){countPria++}
+    else if (dataYangAkanDilooping[item].jenisKelamin === "F"){countWanita++}
+  }
+
+  hasilLooping = arrName;
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
@@ -31,11 +46,15 @@ function lakukanLooping(arrPegawai) {
   */
   let jumlahPria = null;
 
+  jumlahPria = countPria;
+
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
   let jumlahWanita = null;
+
+  jumlahWanita = countWanita;
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -49,6 +68,14 @@ function lakukanLooping(arrPegawai) {
         "Jumlah Pria dan Wanita berimbang"
   */
   let komentar = null;
+
+  if (jumlahPria > jumlahWanita){
+    komentar = "Jumlah Pria lebih banyak dari Wanita";
+  } else if (jumlahPria < jumlahWanita){
+    komentar = "Jumlah Wanita lebih banyak dari Pria";
+  } else if (jumlahPria == jumlahWanita){
+    komentar = "Jumlah Pria dan Wanita berimbang";
+  }
 
   // ! JANGAN DIMODIFIKASI
   return {
@@ -65,6 +92,7 @@ function main(data) {
   console.log(hasil.hasilLooping);
   console.log(hasil.jumlahPria);
   console.log(hasil.jumlahWanita);
+  console.log(hasil.komentar);
 
   return hasil;
 }
